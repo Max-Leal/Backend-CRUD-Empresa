@@ -19,6 +19,10 @@ public class PessoaDAO {
 			stmt.setString(1, pessoa.getNome());
 			stmt.setString(2, pessoa.getEmail());
 			stmt.executeUpdate();
+			System.out.println("Pessoa inserida com sucesso");
+		} catch (SQLIntegrityConstraintViolationException e) {
+			System.out.println("Não pode ser inserido usuários com mesmo email!");
+			System.out.println("Log: " + e.getMessage());
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
@@ -27,7 +31,7 @@ public class PessoaDAO {
 	// GET ALL
 	public List<Pessoa> listarTodas() {
 		List<Pessoa> pessoas = new ArrayList<>();
-		String sql = "SELECT * FROM pessoas";
+		String sql = "SELECT * FROM pessoa";
 		try {
 
 			Connection conn = Conexao.getConexao();
@@ -38,14 +42,14 @@ public class PessoaDAO {
 				Pessoa pessoa = new Pessoa(rs.getInt("id"), rs.getString("nome"), rs.getString("email"));
 				pessoas.add(pessoa);
 			}
-		}  catch (SQLException e) {
+		} catch (SQLException e) {
 			System.out.println(e);
 		}
 		return pessoas;
 	}
 
 	// GET ONE
-	public Pessoa buscarPorId(int id){
+	public Pessoa buscarPorId(int id) {
 		String sql = "SELECT * FROM pessoa WHERE id = ?";
 		try {
 
@@ -58,7 +62,7 @@ public class PessoaDAO {
 			if (rs.next()) {
 				return new Pessoa(rs.getInt("id"), rs.getString("nome"), rs.getString("email"));
 			}
-		}  catch (SQLException e) {
+		} catch (SQLException e) {
 			System.out.println(e);
 		}
 		return null;
@@ -76,7 +80,11 @@ public class PessoaDAO {
 			stmt.setString(2, pessoa.getEmail());
 			stmt.setInt(3, id);
 			stmt.executeUpdate();
-		}  catch (SQLException e) {
+			System.out.println("Pessoa alterada com sucesso");
+		} catch (SQLIntegrityConstraintViolationException e) {
+			System.out.println("Não pode ser inserido usuários com mesmo email!");
+			System.out.println("Log: " + e.getMessage());
+		} catch (SQLException e) {
 			System.out.println(e);
 		}
 	}
@@ -90,7 +98,8 @@ public class PessoaDAO {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
-		}  catch (SQLException e) {
+			System.out.println("Pessoa deletada com sucesso");
+		} catch (SQLException e) {
 			System.out.println(e);
 		}
 	}
