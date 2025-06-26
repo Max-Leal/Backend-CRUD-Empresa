@@ -10,6 +10,12 @@ public class Pessoa {
 		
 	}
 
+	public Pessoa(String nome, String email) {
+		super();
+		this.nome = nome;
+		this.email = email;
+	}
+
 	public Pessoa(int id, String nome, String email) {
 		super();
 		this.id = id;
