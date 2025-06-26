@@ -24,6 +24,7 @@ public class Main {
 			System.out.println(pessoa);
 		}
 
+		/*
 		// Comando de inserir pessoa
 		pDao.inserir(new Pessoa("Jonelson","Jonel@gmail.com"));
 		
@@ -36,6 +37,7 @@ public class Main {
 		// Comando de update
 		Pessoa pessoaAlterada = new Pessoa("Leonardo","Leo@gmail.com");
 		pDao.atualizar(1, pessoaAlterada);
+		*/
 	}
 
 }
