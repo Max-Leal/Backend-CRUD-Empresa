@@ -5,14 +5,20 @@ public class Funcionario extends Pessoa {
 	private int id;
 	private String matricula;
 	private String departamento;
-	
+
 	public Funcionario() {
-		
+
 	}
 
-	public Funcionario(int id, String nome, String email, int id2, String matricula, String departamento) {
-		super(id, nome, email);
-		id = id2;
+	public Funcionario(String matricula, String departamento) {
+		super();
+		this.matricula = matricula;
+		this.departamento = departamento;
+	}
+
+	public Funcionario(int id, String matricula, String departamento) {
+		super();
+		this.id = id;
 		this.matricula = matricula;
 		this.departamento = departamento;
 	}
@@ -43,10 +49,8 @@ public class Funcionario extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [id="+super.getId()+", nome="+super.getNome()+", email="+super.getEmail()+"] Funcionario [id=" +id + ", matricula=" + matricula + ", departamento=" + departamento + "]";
+		return "Pessoa [id=" + super.getId() + ", nome=" + super.getNome() + ", email=" + super.getEmail()
+				+ "] Funcionario [id=" + id + ", matricula=" + matricula + ", departamento=" + departamento + "]";
 	}
 
-	
-	
-	
 }

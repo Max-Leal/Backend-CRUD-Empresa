@@ -6,9 +6,16 @@ public class Projeto {
 	private String nome;
 	private String descricao;
 	private int id_funcionario;
-	
+
 	public Projeto() {
-		
+
+	}
+
+	public Projeto(String nome, String descricao, int id_funcionario) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.id_funcionario = id_funcionario;
 	}
 
 	public Projeto(int id, String nome, String descricao, int id_funcionario) {
@@ -56,6 +63,5 @@ public class Projeto {
 		return "Projeto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", id_funcionario="
 				+ id_funcionario + "]";
 	}
-	
-	
+
 }
